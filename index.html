@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Birthday Gift</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:radial-gradient(circle at top,#35103d,#100812 65%);
+  color:white;
+  font-family:Arial,sans-serif;
+  overflow:hidden;
+}
+
+.container{
+  width:100%;
+  max-width:430px;
+  padding:25px;
+  text-align:center;
+}
+
+h1{
+  font-size:30px;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  color:#c9b9cc;
+  margin-bottom:35px;
+}
+
+.gift-area{
+  perspective:900px;
+  height:260px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.gift{
+  position:relative;
+  width:170px;
+  height:150px;
+  cursor:pointer;
+  transform-style:preserve-3d;
+  animation:float 2.5s ease-in-out infinite;
+}
+
+.box{
+  position:absolute;
+  bottom:0;
+  width:170px;
+  height:125px;
+  background:linear-gradient(135deg,#ff267f,#a90051);
+  border-radius:8px;
+  box-shadow:0 20px 50px #ff168855;
+}
+
+.box:before{
+  content:"";
+  position:absolute;
+  left:70px;
+  width:30px;
+  height:100%;
+  background:#ffd24a;
+}
+
+.lid{
+  position:absolute;
+  top:15px;
+  left:-8px;
+  width:186px;
+  height:38px;
+  background:linear-gradient(135deg,#ff3d91,#c0005c);
+  border-radius:7px;
+  z-index:3;
+  transition:.8s;
+}
+
+.ribbon{
+  position:absolute;
+  top:-27px;
+  left:73px;
+  width:25px;
+  height:35px;
+  border:6px solid #ffd24a;
+  border-bottom:0;
+  border-radius:50% 50% 0 0;
+}
+
+.gift.open .lid{
+  transform:translateY(-95px) rotate(-8deg);
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotateY(0)}
+  50%{transform:translateY(-15px) rotateY(8deg)}
+}
+
+.hint{
+  margin-top:15px;
+  color:#ff69a9;
+  font-size:15px;
+}
+
+.pin-box{
+  display:none;
+  animation:fade .7s;
+}
+
+.pin-box.show{
+  display:block;
+}
+
+.pin-input{
+  width:100%;
+  padding:16px;
+  margin:20px 0;
+  border:1px solid #ff3c91;
+  border-radius:12px;
+  background:#170d1b;
+  color:white;
+  font-size:18px;
+  text-align:center;
+  outline:none;
+}
+
+button{
+  border:0;
+  border-radius:30px;
+  padding:15px 30px;
+  background:linear-gradient(90deg,#ff2182,#ff4ca0);
+  color:white;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 10px 30px #ff218855;
+}
+
+.message{
+  display:none;
+  margin-top:25px;
+  padding:25px;
+  background:#1b1020;
+  border:1px solid #71375f;
+  border-radius:18px;
+  animation:fade .8s;
+}
+
+.message.show{
+  display:block;
+}
+
+.message h2{
+  color:#ff55a2;
+  margin-bottom:15px;
+}
+
+.message p{
+  line-height:1.7;
+  color:#ddd;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.heart{
+  position:fixed;
+  font-size:22px;
+  animation:heart 4s linear forwards;
+  pointer-events:none;
+}
+
+@keyframes heart{
+  from{
+    transform:translateY(100vh) scale(.5);
+    opacity:0;
+  }
+  20%{opacity:1}
+  to{
+    transform:translateY(-10vh) scale(1.5);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>🎁 A Special Birthday Gift</h1>
+  <p class="subtitle">Something special is waiting for you...</p>
+
+  <div class="gift-area">
+    <div class="gift" id="gift">
+      <div class="lid">
+        <div class="ribbon"></div>
+      </div>
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <p class="hint">Tap the gift box</p>
+
+  <div class="pin-box" id="pinBox">
+    <h2>🔐 Secret PIN</h2>
+    <p class="subtitle">Enter the secret code to unlock your gift.</p>
+
+    <input
+      id="pin"
+      class="pin-input"
+      type="password"
+      maxlength="6"
+      placeholder="Enter PIN"
+    >
+
+    <button onclick="unlock()">Unlock Gift</button>
+  </div>
+
+  <div class="message" id="message">
+    <h2>Happy Birthday ❤️</h2>
+    <p>
+      This little gift was made especially for you.
+      May your birthday be filled with happiness,
+      love and beautiful memories.
+    </p>
+    <br>
+    <p>🎂 Have an amazing birthday!</p>
+  </div>
+
+</div>
+
+<script>
+
+const gift = document.getElementById("gift");
+const pinBox = document.getElementById("pinBox");
+
+gift.addEventListener("click", () => {
+
+  gift.classList.add("open");
+
+  setTimeout(() => {
+    pinBox.classList.add("show");
+    document.querySelector(".hint").style.display="none";
+  },700);
+
+});
+
+function unlock(){
+
+  const pin = document.getElementById("pin").value;
+
+  // Change this PIN later
+  if(pin === "1234"){
+
+    document.getElementById("message").classList.add("show");
+    pinBox.style.display="none";
+
+    for(let i=0;i<25;i++){
+      createHeart();
+    }
+
+  }else{
+
+    alert("Wrong PIN. Try again.");
+
+  }
+
+}
+
+function createHeart(){
+
+  const heart=document.createElement("div");
+
+  heart.className="heart";
+  heart.innerHTML="❤";
+
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(3+Math.random()*3)+"s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },6000);
+
+}
+
+</script>
+
+</body>
+</html>
