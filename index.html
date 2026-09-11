@@ -652,16 +652,16 @@ A few special memories just for you.
 
 <div class="gallery">
 
-<img src="photo1.jpg"
+<img src="Photo1.jpg"
      alt="Birthday memory">
 
-<img src="photo2.jpg"
+<img src="Photo2.jpg"
      alt="Birthday memory">
 
-<img src="photo3.jpg"
+<img src="Photo3.jpg"
      alt="Birthday memory">
 
-<img src="photo4.jpg"
+<img src="Photo4.jpg"
      alt="Birthday memory">
 
 </div>
@@ -1019,6 +1019,8 @@ function resizeCanvas(){
     canvas.height =
     box.clientHeight;
 
+    ctx.globalCompositeOperation="source-over";
+
     ctx.fillStyle="#b8b8b8";
 
     ctx.fillRect(
@@ -1068,6 +1070,10 @@ function scratch(x,y){
     ctx.fill();
 }
 
+
+/* =========================
+   TOUCH SCRATCH
+========================= */
 
 canvas.addEventListener(
 "touchstart",
@@ -1120,7 +1126,9 @@ function(e){
 canvas.addEventListener(
 "touchend",
 function(){
+
     scratching=false;
+
 }
 );
 
@@ -1165,6 +1173,15 @@ function(e){
 
 canvas.addEventListener(
 "mouseup",
+function(){
+
+    scratching=false;
+
+});
+
+
+canvas.addEventListener(
+"mouseleave",
 function(){
 
     scratching=false;
