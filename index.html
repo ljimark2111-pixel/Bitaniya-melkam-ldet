@@ -2,301 +2,1232 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday Gift</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>A Special Birthday Gift</title>
 
 <style>
+
+/* =========================
+   RESET
+========================= */
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:radial-gradient(circle at top,#35103d,#100812 65%);
-  color:white;
-  font-family:Arial,sans-serif;
-  overflow:hidden;
+    min-height:100vh;
+    background:
+    radial-gradient(circle at top,#42134b 0%,#180b1d 45%,#08050b 100%);
+    color:white;
+    font-family:Arial,sans-serif;
+    overflow-x:hidden;
 }
+
+/* =========================
+   MAIN
+========================= */
 
 .container{
-  width:100%;
-  max-width:430px;
-  padding:25px;
-  text-align:center;
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding:25px 18px 60px;
+    text-align:center;
 }
 
-h1{
-  font-size:30px;
-  margin-bottom:10px;
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    padding-top:25px;
+}
+
+.hero h1{
+    font-size:32px;
+    line-height:1.2;
+    margin-bottom:12px;
 }
 
 .subtitle{
-  color:#c9b9cc;
-  margin-bottom:35px;
+    color:#cdbbd1;
+    font-size:17px;
+    line-height:1.6;
 }
 
+/* =========================
+   GIFT
+========================= */
+
 .gift-area{
-  perspective:900px;
-  height:260px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+    height:270px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    perspective:900px;
 }
 
 .gift{
-  position:relative;
-  width:170px;
-  height:150px;
-  cursor:pointer;
-  transform-style:preserve-3d;
-  animation:float 2.5s ease-in-out infinite;
+    position:relative;
+    width:180px;
+    height:160px;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    animation:float 2.5s ease-in-out infinite;
 }
 
 .box{
-  position:absolute;
-  bottom:0;
-  width:170px;
-  height:125px;
-  background:linear-gradient(135deg,#ff267f,#a90051);
-  border-radius:8px;
-  box-shadow:0 20px 50px #ff168855;
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:180px;
+    height:130px;
+    border-radius:10px;
+
+    background:
+    linear-gradient(135deg,#ff2382,#a50050);
+
+    box-shadow:
+    0 20px 60px rgba(255,20,120,.45);
 }
 
 .box:before{
-  content:"";
-  position:absolute;
-  left:70px;
-  width:30px;
-  height:100%;
-  background:#ffd24a;
+    content:"";
+    position:absolute;
+    left:75px;
+    top:0;
+    width:30px;
+    height:100%;
+    background:#ffd447;
 }
 
 .lid{
-  position:absolute;
-  top:15px;
-  left:-8px;
-  width:186px;
-  height:38px;
-  background:linear-gradient(135deg,#ff3d91,#c0005c);
-  border-radius:7px;
-  z-index:3;
-  transition:.8s;
+    position:absolute;
+    z-index:5;
+    top:15px;
+    left:-8px;
+
+    width:196px;
+    height:42px;
+
+    border-radius:8px;
+
+    background:
+    linear-gradient(135deg,#ff3c91,#c0005d);
+
+    transition:1s;
 }
 
 .ribbon{
-  position:absolute;
-  top:-27px;
-  left:73px;
-  width:25px;
-  height:35px;
-  border:6px solid #ffd24a;
-  border-bottom:0;
-  border-radius:50% 50% 0 0;
+    position:absolute;
+    top:-30px;
+    left:84px;
+
+    width:27px;
+    height:38px;
+
+    border:6px solid #ffd447;
+    border-bottom:0;
+    border-radius:50% 50% 0 0;
 }
 
 .gift.open .lid{
-  transform:translateY(-95px) rotate(-8deg);
+    transform:
+    translateY(-110px)
+    rotate(-8deg);
 }
 
 @keyframes float{
-  0%,100%{transform:translateY(0) rotateY(0)}
-  50%{transform:translateY(-15px) rotateY(8deg)}
+    0%,100%{
+        transform:translateY(0) rotateY(0);
+    }
+
+    50%{
+        transform:translateY(-15px) rotateY(8deg);
+    }
 }
 
 .hint{
-  margin-top:15px;
-  color:#ff69a9;
-  font-size:15px;
+    margin-top:-10px;
+    color:#ff65aa;
+    font-weight:bold;
 }
 
+/* =========================
+   PIN
+========================= */
+
 .pin-box{
-  display:none;
-  animation:fade .7s;
+    display:none;
+    margin-top:25px;
+    animation:fade .7s;
 }
 
 .pin-box.show{
-  display:block;
+    display:block;
+}
+
+.pin-box h2{
+    margin-bottom:10px;
 }
 
 .pin-input{
-  width:100%;
-  padding:16px;
-  margin:20px 0;
-  border:1px solid #ff3c91;
-  border-radius:12px;
-  background:#170d1b;
-  color:white;
-  font-size:18px;
-  text-align:center;
-  outline:none;
+    width:100%;
+    padding:16px;
+    margin:20px 0;
+
+    background:#140a18;
+    border:1px solid #ff3d91;
+    border-radius:14px;
+
+    color:white;
+    text-align:center;
+    font-size:20px;
+    outline:none;
 }
 
 button{
-  border:0;
-  border-radius:30px;
-  padding:15px 30px;
-  background:linear-gradient(90deg,#ff2182,#ff4ca0);
-  color:white;
-  font-size:17px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 10px 30px #ff218855;
+    border:0;
+    padding:14px 25px;
+    border-radius:30px;
+
+    background:
+    linear-gradient(90deg,#ff2182,#ff4da0);
+
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 30px rgba(255,30,130,.3);
+
+    transition:.3s;
 }
 
-.message{
-  display:none;
-  margin-top:25px;
-  padding:25px;
-  background:#1b1020;
-  border:1px solid #71375f;
-  border-radius:18px;
-  animation:fade .8s;
+button:active{
+    transform:scale(.95);
 }
 
-.message.show{
-  display:block;
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    display:none;
+    animation:fade 1s;
 }
 
-.message h2{
-  color:#ff55a2;
-  margin-bottom:15px;
+.content.show{
+    display:block;
 }
 
-.message p{
-  line-height:1.7;
-  color:#ddd;
+.section{
+    margin-top:30px;
+    padding:24px 18px;
+
+    background:
+    rgba(28,14,33,.92);
+
+    border:
+    1px solid #71375f;
+
+    border-radius:20px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.25);
 }
 
-@keyframes fade{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
+.section h2{
+    color:#ff5da6;
+    margin-bottom:15px;
 }
+
+.section p{
+    color:#ddd;
+    line-height:1.8;
+}
+
+/* =========================
+   WISHES
+========================= */
+
+.wish{
+    padding:15px;
+    margin-top:12px;
+
+    background:#241329;
+    border-radius:14px;
+
+    color:#eee;
+}
+
+/* =========================
+   PHOTOS
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:15px;
+}
+
+.gallery img{
+    width:100%;
+    height:190px;
+
+    object-fit:cover;
+
+    border-radius:15px;
+
+    border:2px solid #ff4d9e;
+
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* =========================
+   SCRATCH CARD
+========================= */
+
+.scratch-container{
+    position:relative;
+
+    width:100%;
+    height:180px;
+
+    margin-top:15px;
+
+    border-radius:18px;
+    overflow:hidden;
+
+    background:#ffd34d;
+}
+
+#scratchCanvas{
+    position:absolute;
+    left:0;
+    top:0;
+
+    width:100%;
+    height:100%;
+
+    z-index:2;
+}
+
+.scratch-message{
+    position:absolute;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    color:#3c183f;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter{
+    margin-top:15px;
+    padding:25px;
+
+    background:#fff9e9;
+    color:#30202d;
+
+    border-radius:5px;
+
+    text-align:left;
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,.3);
+
+    font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+}
+
+.letter-title{
+    text-align:center;
+    color:#9b245e;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.letter p{
+    color:#30202d;
+    line-height:1.9;
+}
+
+/* =========================
+   MUSIC
+========================= */
+
+.music-box{
+    padding:20px;
+    background:#241329;
+    border-radius:18px;
+}
+
+audio{
+    width:100%;
+    margin-top:15px;
+}
+
+/* =========================
+   SHARE
+========================= */
+
+.share-box{
+    text-align:center;
+}
+
+.share-btn{
+    margin-top:15px;
+}
+
+/* =========================
+   SUCCESS
+========================= */
+
+.success{
+    margin-top:20px;
+    color:#ff7ab5;
+    display:none;
+}
+
+/* =========================
+   HEARTS
+========================= */
 
 .heart{
-  position:fixed;
-  font-size:22px;
-  animation:heart 4s linear forwards;
-  pointer-events:none;
+    position:fixed;
+
+    bottom:-30px;
+
+    font-size:22px;
+
+    pointer-events:none;
+
+    z-index:9999;
+
+    animation:
+    heartFloat 4s linear forwards;
 }
 
-@keyframes heart{
-  from{
-    transform:translateY(100vh) scale(.5);
-    opacity:0;
-  }
-  20%{opacity:1}
-  to{
-    transform:translateY(-10vh) scale(1.5);
-    opacity:0;
-  }
+@keyframes heartFloat{
+
+    0%{
+        transform:
+        translateY(0)
+        scale(.5);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:1;
+    }
+
+    100%{
+        transform:
+        translateY(-110vh)
+        scale(1.5);
+
+        opacity:0;
+    }
 }
+
+/* =========================
+   CONFETTI
+========================= */
+
+.confetti{
+    position:fixed;
+
+    width:8px;
+    height:8px;
+
+    top:-10px;
+
+    z-index:9998;
+
+    animation:
+    confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall{
+
+    to{
+        transform:
+        translateY(110vh)
+        rotate(720deg);
+
+        opacity:0;
+    }
+}
+
+/* =========================
+   FADE
+========================= */
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:380px){
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .gallery img{
+        height:160px;
+    }
+
+    .section{
+        padding:20px 15px;
+    }
+}
+
 </style>
 </head>
+
 
 <body>
 
 <div class="container">
 
-  <h1>🎁 A Special Birthday Gift</h1>
-  <p class="subtitle">Something special is waiting for you...</p>
+<!-- =========================
+     HERO
+========================= -->
 
-  <div class="gift-area">
-    <div class="gift" id="gift">
-      <div class="lid">
-        <div class="ribbon"></div>
-      </div>
-      <div class="box"></div>
-    </div>
-  </div>
+<div class="hero">
 
-  <p class="hint">Tap the gift box</p>
+<h1>
+🎁 A Special Birthday Gift
+</h1>
 
-  <div class="pin-box" id="pinBox">
-    <h2>🔐 Secret PIN</h2>
-    <p class="subtitle">Enter the secret code to unlock your gift.</p>
-
-    <input
-      id="pin"
-      class="pin-input"
-      type="password"
-      maxlength="6"
-      placeholder="Enter PIN"
-    >
-
-    <button onclick="unlock()">Unlock Gift</button>
-  </div>
-
-  <div class="message" id="message">
-    <h2>Happy Birthday ❤️</h2>
-    <p>
-      This little gift was made especially for you.
-      May your birthday be filled with happiness,
-      love and beautiful memories.
-    </p>
-    <br>
-    <p>🎂 Have an amazing birthday!</p>
-  </div>
+<p class="subtitle">
+Something special is waiting for you...
+</p>
 
 </div>
 
+
+<!-- =========================
+     GIFT
+========================= -->
+
+<div class="gift-area">
+
+<div class="gift" id="gift">
+
+<div class="lid">
+<div class="ribbon"></div>
+</div>
+
+<div class="box"></div>
+
+</div>
+
+</div>
+
+<p class="hint" id="hint">
+Tap the gift box
+</p>
+
+
+<!-- =========================
+     PIN
+========================= -->
+
+<div class="pin-box" id="pinBox">
+
+<h2>
+🔐 Secret PIN
+</h2>
+
+<p class="subtitle">
+Enter the secret code to unlock your birthday gift.
+</p>
+
+<input
+id="pin"
+class="pin-input"
+type="password"
+maxlength="6"
+placeholder="Enter PIN"
+>
+
+<br>
+
+<button onclick="unlock()">
+Unlock Gift
+</button>
+
+</div>
+
+
+<!-- =========================
+     ALL CONTENT
+========================= -->
+
+<div class="content" id="content">
+
+
+<!-- BIRTHDAY WISHES -->
+
+<div class="section">
+
+<h2>
+🎈 Birthday Wishes
+</h2>
+
+<div class="wish">
+May your birthday be filled with happiness,
+love and beautiful memories.
+</div>
+
+<div class="wish">
+May every dream in your heart
+come true.
+</div>
+
+<div class="wish">
+Keep smiling and keep shining.
+You deserve the best.
+</div>
+
+</div>
+
+
+<!-- =========================
+     PHOTOS
+========================= -->
+
+<div class="section">
+
+<h2>
+📸 Our Memories
+</h2>
+
+<p>
+A few special memories just for you.
+</p>
+
+<div class="gallery">
+
+<img src="photo1.jpg"
+     alt="Birthday memory">
+
+<img src="photo2.jpg"
+     alt="Birthday memory">
+
+<img src="photo3.jpg"
+     alt="Birthday memory">
+
+<img src="photo4.jpg"
+     alt="Birthday memory">
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     SCRATCH CARD
+========================= -->
+
+<div class="section">
+
+<h2>
+✨ Scratch Card
+</h2>
+
+<p>
+Scratch the golden card to reveal your surprise.
+</p>
+
+<div class="scratch-container">
+
+<div class="scratch-message">
+❤️ You are very special to me ❤️
+</div>
+
+<canvas id="scratchCanvas"></canvas>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     HANDWRITTEN LETTER
+========================= -->
+
+<div class="section">
+
+<h2>
+💌 A Handwritten Letter
+</h2>
+
+<div class="letter">
+
+<div class="letter-title">
+To Someone Special ❤️
+</div>
+
+<p>
+Dear You,
+</p>
+
+<br>
+
+<p>
+Today is your special day, and I just
+wanted to remind you how special you are.
+</p>
+
+<br>
+
+<p>
+I hope this new year of your life brings
+you happiness, peace, success and many
+beautiful moments.
+</p>
+
+<br>
+
+<p>
+Never stop believing in yourself.
+Keep smiling, keep dreaming and keep
+being the wonderful person you are.
+</p>
+
+<br>
+
+<p>
+Happy Birthday! ❤️
+</p>
+
+<br>
+
+<p>
+With love,<br>
+Someone who cares about you
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     MUSIC
+========================= -->
+
+<div class="section">
+
+<h2>
+🎵 Birthday Music
+</h2>
+
+<div class="music-box">
+
+<p>
+Listen to this special song while
+enjoying your birthday gift.
+</p>
+
+<audio controls>
+<source src="birthday.mp3" type="audio/mpeg">
+Your browser does not support audio.
+</audio>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     SHARE LINK
+========================= -->
+
+<div class="section share-box">
+
+<h2>
+🔗 Share This Gift
+</h2>
+
+<p>
+Send this birthday surprise to someone special.
+</p>
+
+<button
+class="share-btn"
+onclick="shareGift()">
+
+Share Birthday Gift
+
+</button>
+
+<p
+class="success"
+id="shareSuccess">
+
+Link copied successfully!
+
+</p>
+
+</div>
+
+
+<!-- END -->
+
+<div class="section">
+
+<h2>
+🎂 Happy Birthday ❤️
+</h2>
+
+<p>
+Have an amazing birthday!
+May your day be full of happiness,
+love and unforgettable memories.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+
 <script>
 
-const gift = document.getElementById("gift");
-const pinBox = document.getElementById("pinBox");
+/* =========================
+   GIFT OPEN
+========================= */
 
-gift.addEventListener("click", () => {
+const gift =
+document.getElementById("gift");
 
-  gift.classList.add("open");
+const pinBox =
+document.getElementById("pinBox");
 
-  setTimeout(() => {
-    pinBox.classList.add("show");
-    document.querySelector(".hint").style.display="none";
-  },700);
+const hint =
+document.getElementById("hint");
+
+const content =
+document.getElementById("content");
+
+
+gift.addEventListener("click",function(){
+
+    gift.classList.add("open");
+
+    setTimeout(function(){
+
+        pinBox.classList.add("show");
+
+        hint.style.display="none";
+
+        pinBox.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+    },700);
 
 });
 
+
+/* =========================
+   PIN
+========================= */
+
 function unlock(){
 
-  const pin = document.getElementById("pin").value;
+    const pin =
+    document.getElementById("pin").value;
 
-  // Change this PIN later
-  if(pin === "1234"){
+    /*
+       CHANGE YOUR PIN HERE
+    */
 
-    document.getElementById("message").classList.add("show");
-    pinBox.style.display="none";
+    if(pin === "1234"){
 
-    for(let i=0;i<25;i++){
-      createHeart();
+        pinBox.style.display="none";
+
+        content.classList.add("show");
+
+        createHearts();
+
+        createConfetti();
+
+        setTimeout(function(){
+
+            content.scrollIntoView({
+                behavior:"smooth"
+            });
+
+        },300);
+
     }
 
-  }else{
+    else{
 
-    alert("Wrong PIN. Try again.");
+        alert(
+        "Wrong PIN. Please try again."
+        );
 
-  }
+    }
 
 }
 
-function createHeart(){
 
-  const heart=document.createElement("div");
+/* =========================
+   HEARTS
+========================= */
 
-  heart.className="heart";
-  heart.innerHTML="❤";
+function createHearts(){
 
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.animationDuration=(3+Math.random()*3)+"s";
+    for(let i=0;i<35;i++){
 
-  document.body.appendChild(heart);
+        setTimeout(function(){
 
-  setTimeout(()=>{
-    heart.remove();
-  },6000);
+            const heart =
+            document.createElement("div");
+
+            heart.className="heart";
+
+            heart.innerHTML="❤";
+
+            heart.style.left =
+            Math.random()*100+"vw";
+
+            heart.style.animationDuration =
+            (3+Math.random()*3)+"s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function(){
+                heart.remove();
+            },6000);
+
+        },i*80);
+
+    }
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+function createConfetti(){
+
+    for(let i=0;i<70;i++){
+
+        setTimeout(function(){
+
+            const c =
+            document.createElement("div");
+
+            c.className="confetti";
+
+            c.style.left =
+            Math.random()*100+"vw";
+
+            c.style.animationDuration =
+            (2+Math.random()*3)+"s";
+
+            c.style.transform =
+            "rotate("+Math.random()*360+"deg)";
+
+            document.body.appendChild(c);
+
+            setTimeout(function(){
+                c.remove();
+            },5000);
+
+        },i*30);
+
+    }
+
+}
+
+
+/* =========================
+   SCRATCH CARD
+========================= */
+
+const canvas =
+document.getElementById("scratchCanvas");
+
+const ctx =
+canvas.getContext("2d");
+
+let scratching=false;
+
+
+function resizeCanvas(){
+
+    const box =
+    canvas.parentElement;
+
+    canvas.width =
+    box.clientWidth;
+
+    canvas.height =
+    box.clientHeight;
+
+    ctx.fillStyle="#b8b8b8";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    ctx.fillStyle="#777";
+
+    ctx.font="bold 22px Arial";
+
+    ctx.textAlign="center";
+
+    ctx.fillText(
+        "SCRATCH HERE",
+        canvas.width/2,
+        canvas.height/2
+    );
+}
+
+
+resizeCanvas();
+
+window.addEventListener(
+"resize",
+resizeCanvas
+);
+
+
+function scratch(x,y){
+
+    ctx.globalCompositeOperation =
+    "destination-out";
+
+    ctx.beginPath();
+
+    ctx.arc(
+        x,
+        y,
+        22,
+        0,
+        Math.PI*2
+    );
+
+    ctx.fill();
+}
+
+
+canvas.addEventListener(
+"touchstart",
+function(e){
+
+    scratching=true;
+
+    const rect =
+    canvas.getBoundingClientRect();
+
+    const touch =
+    e.touches[0];
+
+    scratch(
+        touch.clientX-rect.left,
+        touch.clientY-rect.top
+    );
+
+    e.preventDefault();
+
+},
+{passive:false}
+);
+
+
+canvas.addEventListener(
+"touchmove",
+function(e){
+
+    if(!scratching)return;
+
+    const rect =
+    canvas.getBoundingClientRect();
+
+    const touch =
+    e.touches[0];
+
+    scratch(
+        touch.clientX-rect.left,
+        touch.clientY-rect.top
+    );
+
+    e.preventDefault();
+
+},
+{passive:false}
+);
+
+
+canvas.addEventListener(
+"touchend",
+function(){
+    scratching=false;
+}
+);
+
+
+/* =========================
+   MOUSE SCRATCH
+========================= */
+
+canvas.addEventListener(
+"mousedown",
+function(e){
+
+    scratching=true;
+
+    const rect =
+    canvas.getBoundingClientRect();
+
+    scratch(
+        e.clientX-rect.left,
+        e.clientY-rect.top
+    );
+
+});
+
+
+canvas.addEventListener(
+"mousemove",
+function(e){
+
+    if(!scratching)return;
+
+    const rect =
+    canvas.getBoundingClientRect();
+
+    scratch(
+        e.clientX-rect.left,
+        e.clientY-rect.top
+    );
+
+});
+
+
+canvas.addEventListener(
+"mouseup",
+function(){
+
+    scratching=false;
+
+});
+
+
+/* =========================
+   SHARE
+========================= */
+
+async function shareGift(){
+
+    const url =
+    window.location.href;
+
+    if(navigator.share){
+
+        try{
+
+            await navigator.share({
+
+                title:
+                "A Special Birthday Gift",
+
+                text:
+                "I made a special birthday gift for you ❤️",
+
+                url:url
+
+            });
+
+        }
+
+        catch(error){
+
+        }
+
+    }
+
+    else{
+
+        try{
+
+            await navigator.clipboard
+            .writeText(url);
+
+            document
+            .getElementById("shareSuccess")
+            .style.display="block";
+
+        }
+
+        catch(error){
+
+            prompt(
+            "Copy this link:",
+            url
+            );
+
+        }
+
+    }
 
 }
 
